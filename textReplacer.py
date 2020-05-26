@@ -41,21 +41,21 @@ def replaceText(txtFile, wordList):
     # Here we actually replace the text.
     with open(file_to_edit, 'w+') as f:
         # we loop over all of the lines in the text you want to replace
-        for line, word in enumerate(content):
+        for line in content:
             # we need to loop over every word that we want to replace
             for index, wordToReplace in enumerate(wordsToReplaceOld):
                 '''
-                If the word contains wordToReplace, 
+                If the line contains wordToReplace, 
                 we simple take the whole line of text, 
                 and replace that word with the new one.
                 then we continue.
                 Then the loop contiues to check if their are
                 more words that are in the line
                 '''
-                if word.__contains__(wordToReplace): word = word.replace(wordToReplace,wordsToReplaceNew[index]); continue
-                # if word doesn't contained wordToReplace, we simply continute the for loop.
+                if line.__contains__(wordToReplace): line = line.replace(wordToReplace,wordsToReplaceNew[index]); continue
+                # if line doesn't contained wordToReplace, we simply continute the for loop.
                 else: continue
-            # write the newly modified word into the file!
-            f.write(word)
+            # write the newly modified line into the file!
+            f.write(line)
 # Calls the function that begins the text replace process 
 if __name__ == '__main__': replaceText('textTest.txt', 'textToReplace.txt')
